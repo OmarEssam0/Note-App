@@ -1,0 +1,80 @@
+<section class="signup d-flex align-items-center vh-100">
+    <div class="container boxShadow">
+        <div class="signup-content row">
+            <div class="signup-form col-md-6">
+                <h2 class="form-title fs-2">Sign up</h2>
+                <form [formGroup]="registerForms" (ngSubmit)="submitBtn()" class="register-form mt-4" id="register-form">
+                    <div class="form-group d-flex align-items-center mb-4">
+                        <label for="name">
+                            <span class="fa-solid fa-user"></span>
+                        </label>
+                        <input formControlName="name" type="text" name="name" id="name" placeholder="Your Name" />
+                    </div>
+                    <p class="alert alert-danger" *ngIf="registerForms.get('name')?.errors && registerForms.get('name')?.touched">
+                      <span *ngIf="registerForms.get('name')?.getError('required')">Requerd</span>
+                      <span *ngIf="registerForms.get('name')?.getError('minlength')">Min Length should be 3 </span>
+                    </p>
+                    <div class="form-group d-flex align-items-center mb-4">
+                        <label for="email">
+                            <span class="fa-solid fa-envelope"></span>
+                        </label>
+                        <input formControlName="email"  type="email" name="email" id="email" placeholder="Your Email" />
+                    </div>
+                    <p class="alert alert-danger" *ngIf="registerForms.get('email')?.errors && registerForms.get('email')?.touched">
+                      <span *ngIf="registerForms.get('email')?.getError('required')">Requerd</span>
+                      <span *ngIf="registerForms.get('email')?.getError('email')">Min Length should be email </span>
+                    </p>
+                    <div class="form-group d-flex align-items-center mb-4">
+                        <label for="pass">
+                            <span class="fa-solid fa-lock"></span>
+                        </label>
+                        <input formControlName="password"  type="password" name="password" id="password" placeholder="Password" />
+                    </div>
+                    <p class="alert alert-danger" *ngIf="registerForms.get('password')?.errors && registerForms.get('password')?.touched">
+                      <span *ngIf="registerForms.get('password')?.getError('required')">Requerd</span>
+                      <span *ngIf="registerForms.get('password')?.getError('pattern')">
+                        * Must start with capital letter <br>
+                        * Contains more than 6 charters <br>
+                        * Max length 16 charters <br>
+                        * Don't use special charters <br>
+                      </span>
+                    </p>
+                    <div class="form-group d-flex align-items-center mb-4">
+                        <label for="phone">
+                            <span class="fa-solid fa-phone"></span>
+                        </label>
+                        <input formControlName="phone"  type="tel" name="phone" id="phone" placeholder="Phone" />
+                    </div>
+                    <p class="alert alert-danger" *ngIf="registerForms.get('phone')?.errors && registerForms.get('phone')?.touched">
+                      <span *ngIf="registerForms.get('phone')?.getError('required')">Requerd</span>
+                      <span *ngIf="registerForms.get('phone')?.getError('pattern')">* Should be Egyptian Number </span>
+                    </p>
+                    <div class="form-group d-flex align-items-center mb-4">
+                        <label for="age">
+                            <span class="fa-solid fa-globe"></span>
+                        </label>
+                        <input formControlName="age"  type="number" name="age" id="age" placeholder="Age" />
+                    </div>
+                    <p class="alert alert-danger" *ngIf="registerForms.get('age')?.errors && registerForms.get('age')?.touched">
+                      <span *ngIf="registerForms.get('age')?.getError('required')">Requerd</span>
+                    </p>
+                    <p class="text-danger text-center">
+                     {{errMessage}}
+                    </p>
+                    <div class="d-flex justify-content-center align-items-center flex-column">
+                        <button class="btn btn-danger">
+                            <i class="fa fa-spinner fa-spin" *ngIf="isLogin"></i>
+                            <span *ngIf="!isLogin">Register</span>
+                        </button>
+                        <p class="my-3">Already Have an account?
+                            <a class="text-info" routerLink="/signin">Signin</a>
+                        </p>
+                    </div>
+                </form>
+            </div>
+            <div class="signup-image col-md-6 d-flex justify-content-center">
+                <figure><img src="assets/images/signup-image.jpg" alt="sing up image"/></figure>
+            </div>
+        </div>
+    </div>
+</section>

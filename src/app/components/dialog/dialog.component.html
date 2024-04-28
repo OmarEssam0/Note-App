@@ -1,0 +1,22 @@
+<div mat-dialog-content>
+  <p>Add Your Note</p>
+  <form [formGroup]="AddNote" (ngSubmit)="handleForm()" class="d-flex flex-column">
+    <mat-form-field>
+      <mat-label>Title</mat-label>
+      <input formControlName="title" matInput >
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Content</mat-label>
+      <input formControlName="content" matInput >
+    </mat-form-field>
+    <p class="text-center text-danger">{{errMsg}}</p>
+    <div mat-dialog-actions>
+      <button color="warn" mat-button cdkFocusInitial *ngIf="!data else UpdateBtn ">ADD</button>
+      <ng-template #UpdateBtn>
+        <button color="primary" mat-button cdkFocusInitial>UPDATE</button>
+      </ng-template>
+
+    </div>
+  </form>
+</div>
+<!-- <h2>ssssssss</h2> -->
